@@ -1,0 +1,24 @@
+# Sea Horizon Holidays - Lakshadweep Tour Operator
+# Website: https://seahorizonholidays.com
+
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /packages
+Allow: /stays
+Allow: /lakshadweep
+Allow: /blog
+Allow: /contact
+
+# Disallow admin and private areas
+Disallow: /admin
+Disallow: /api
+Disallow: /_next
+Disallow: /private
+
+# Sitemap location
+Sitemap: https://seahorizonholidays.com/sitemap.xml
+
+# Crawl-delay for responsible crawling
+Crawl-delay: 1

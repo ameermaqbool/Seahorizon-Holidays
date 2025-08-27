@@ -1,0 +1,50 @@
+{
+  "name": "Sea Horizon Holidays - Lakshadweep Tours",
+  "short_name": "Sea Horizon",
+  "description": "Lakshadweep tour packages, permits, and local expertise by Sea Horizon Holidays - your trusted DMC for coral island adventures.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "categories": ["travel", "tourism", "vacation"],
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tour Packages",
+      "short_name": "Packages",
+      "description": "Browse Lakshadweep tour packages",
+      "url": "/packages",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Plan Trip",
+      "short_name": "Plan",
+      "description": "Get personalized trip recommendations",
+      "url": "/#trip-planner",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "WhatsApp",
+      "short_name": "Chat",
+      "description": "Chat with us on WhatsApp",
+      "url": "https://wa.me/918075301729",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
