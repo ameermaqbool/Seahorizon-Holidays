@@ -9,9 +9,9 @@
     "lint": "next lint",
     "pre-deploy": "node scripts/pre-deploy.js",
     "post-deploy": "node scripts/post-deploy.js",
-    "deploy": "npm run pre-deploy && npm run build && npm run post-deploy"
-    
+    "deploy": "npm run pre-deploy && npm run build && npm run post-deploy",
     "postbuild": "next-sitemap"
+
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
