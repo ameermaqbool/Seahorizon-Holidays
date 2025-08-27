@@ -14,6 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://seahorizonholidays.com"),
   title: {
     default: 'Lakshadweep Tours & Packages — Sea Horizon Holidays (Local DMC)',
     template: '%s | Sea Horizon Holidays'

@@ -1,4 +1,4 @@
-import { Organization, TravelAgency, Product } from 'schema-dts';
+import type { WithContext, TravelAgency, Product, Organization } from "schema-dts";
 
 interface StructuredDataProps {
   type: 'organization' | 'package' | 'article';
@@ -6,7 +6,7 @@ interface StructuredDataProps {
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
-  let structuredData: Organization | TravelAgency | Product;
+  let structuredData: WithContext<TravelAgency | Product | Organization>;
 
   switch (type) {
     case 'organization':
@@ -29,11 +29,12 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           '@type': 'Place',
           name: 'Lakshadweep Islands, India'
         },
-        serviceType: [
-          'Travel Agency',
-          'Tour Operator',
-          'Destination Management Company'
+        knowsAbout: [
+          "Travel Agency",
+          "Tour Operator",
+          "Destination Management Company"
         ],
+
         sameAs: [
           'https://www.instagram.com/seahorizonindia/'
         ],

@@ -21,6 +21,18 @@ interface FormData {
   city: string;
 }
 
+interface Package {
+  title: string;
+  slug: string;
+  priceFromINR: number;
+  durationDays: number;
+  durationNights: number;
+  islands: string[];
+  highlights: string[];
+  tags: string[];
+  gallery: { src: string }[];
+}
+
 export function TripPlanner() {
   const [formData, setFormData] = useState<FormData>({
     dates: '',
@@ -31,7 +43,7 @@ export function TripPlanner() {
     phone: '',
     city: ''
   });
-  const [recommendedPackage, setRecommendedPackage] = useState(null);
+  const [recommendedPackage, setRecommendedPackage] = useState<Package | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const interests = [

@@ -48,9 +48,7 @@ export function WhatsAppFloat() {
           </p>
           
           <Button
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            asChild
             className="w-full bg-[#25d366] hover:bg-[#128c7e] text-white"
           >
             <a
