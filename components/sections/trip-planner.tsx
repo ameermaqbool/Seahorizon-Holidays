@@ -11,8 +11,18 @@ import { Calendar, Users, MapPin, Heart, Camera, Waves } from 'lucide-react';
 import { packages } from '@/lib/data/packages';
 import { toast } from 'sonner';
 
+interface FormData {
+  dates: string;
+  pax: string;
+  budget: string;
+  islands: string[];
+  interests: string[];
+  phone: string;
+  city: string;
+}
+
 export function TripPlanner() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     dates: '',
     pax: '',
     budget: '',
