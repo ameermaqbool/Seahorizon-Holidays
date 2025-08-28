@@ -16,7 +16,7 @@ export function WhatsAppFloat() {
     return () => clearTimeout(timer);
   }, []);
 
-  const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace('+', '')}?text=Hi Sea Horizon! I'd like to know more about your Lakshadweep packages.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip.${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace('+', '')}?text=Hi Sea Horizon! I'd like to know more about your Lakshadweep packages.`;
 
   if (!isVisible) return null;
 

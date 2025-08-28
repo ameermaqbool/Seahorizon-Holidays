@@ -133,7 +133,7 @@ export function Footer() {
 
             {/* WhatsApp CTA */}
             <a
-              href={`https://wa.me/918075301729?text=Hi Sea Horizon! I'd like to plan my Lakshadweep trip.`}
+              href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to plan my Lakshadweep trip.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-full px-4 py-2 bg-[#25d366] hover:bg-[#128c7e] text-white rounded-md font-medium transition-colors"

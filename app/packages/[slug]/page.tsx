@@ -365,7 +365,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                   </p>
                   <Button asChild className="bg-[#25d366] hover:bg-[#128c7e] text-white" size="lg">
                     <a
-                      href={`https://wa.me/8075301729?text=Hi Sea Horizon! I'd like to get a detailed quote for the ${pkg.title} package. Please share pricing and availability.`}
+                      href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to get a detailed quote for the ${pkg.title} package. Please share pricing and availability.`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -421,7 +421,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                   className="w-full bg-[#25d366] hover:bg-[#128c7e] text-white"
                 >
                   <a
-                    href={`https://wa.me/8075301729?text=Hi Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote with pricing?`}
+                    href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote with pricing?`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

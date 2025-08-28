@@ -96,7 +96,7 @@ export function FeaturedPackages() {
                     className="px-4 border-blue-600 text-blue-600 hover:bg-blue-50"
                   >
                     <a
-                      href={`https://wa.me/8075301729?text=Hi Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide more details?`}
+                      href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide more details?`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

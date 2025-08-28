@@ -74,7 +74,7 @@ export function Hero() {
             className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-5 text-xl font-semibold rounded-full backdrop-blur-md bg-white/10 transition-all duration-300 hover:scale-105 shadow-lg"
           >
             <a
-              href="https://wa.me/918075301729?text=Hi Sea Horizon! I'd like to plan my Lakshadweep trip."
+              href="https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to plan my Lakshadweep trip."
               target="_blank"
               rel="noopener noreferrer"
             >

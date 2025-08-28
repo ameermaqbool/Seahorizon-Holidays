@@ -42,7 +42,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi Sea Horizon! I read your blog post "${post.title}" and would like to plan my Lakshadweep trip. Can you help me?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I read your blog post "${post.title}" and would like to plan my Lakshadweep trip. Can you help me?`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">

@@ -107,7 +107,7 @@ Please share detailed itinerary and final pricing. Thank you!`;
       console.log('CRM Data:', crmData);
 
       // Open WhatsApp
-      const whatsappUrl = `https://wa.me/8075301729?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
       toast.success('Trip planned! WhatsApp opened with your details.');
