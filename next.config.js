@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { 
+  images: {
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000,
@@ -15,10 +14,23 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   swcMinify: false,
+
+  // 🚀 Force a unique build ID on every deploy → busts cache
+  generateBuildId: async () => {
+    return Date.now().toString();
+  },
+
+  // 🚀 Disable aggressive caching in dev/export mode
+  onDemandEntries: {
+    maxInactiveAge: 0,
+    pagesBufferLength: 0,
+  },
+
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
+
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -26,7 +38,7 @@ const nextConfig = {
         fs: false,
       };
     }
-    
+
     // Optimize bundle splitting
     config.optimization = {
       ...config.optimization,
@@ -41,7 +53,7 @@ const nextConfig = {
         },
       },
     };
-    
+
     return config;
   },
 };
