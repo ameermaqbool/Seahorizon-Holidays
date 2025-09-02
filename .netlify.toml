@@ -1,10 +1,10 @@
 [build]
   command = "npm run build"
   publish = ".next"
-  node_version = "20"
 
-[functions]
-  node_bundler = "esbuild"
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
 
-[plugins]
+[[plugins]]
   package = "@netlify/plugin-nextjs"
