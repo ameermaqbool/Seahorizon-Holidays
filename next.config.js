@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',   // 🚀 Make build output static for Netlify
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
   eslint: {
@@ -15,12 +16,12 @@ const nextConfig = {
   generateEtags: false,
   swcMinify: false,
 
-  // 🚀 Force a unique build ID on every deploy → busts cache
+  // Force a unique build ID on every deploy → busts cache
   generateBuildId: async () => {
     return Date.now().toString();
   },
 
-  // 🚀 Disable aggressive caching in dev/export mode
+  // Disable aggressive caching in dev/export mode
   onDemandEntries: {
     maxInactiveAge: 0,
     pagesBufferLength: 0,
