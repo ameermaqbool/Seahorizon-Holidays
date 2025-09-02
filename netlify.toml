@@ -6,5 +6,3 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
-# 👇 This tells Netlify "no plugins at all"
-[plugins]
