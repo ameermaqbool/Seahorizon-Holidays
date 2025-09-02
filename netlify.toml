@@ -6,7 +6,5 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[plugins]]
-package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-  disable = true
+# 👇 This tells Netlify "no plugins at all"
+[plugins]
