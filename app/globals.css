@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -187,13 +185,6 @@ img {
 .avatar-image {
   aspect-ratio: 1;
   object-fit: cover;
-}
-
-/* Optimize font loading */
-@font-face {
-  font-family: 'Inter';
-  font-display: swap;
-  font-weight: 300 700;
 }
 
 /* Reduced motion */

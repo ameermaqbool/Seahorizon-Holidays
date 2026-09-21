@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     alternates: { canonical: `https://seahorizonholidays.com/blog/${slug}` },
     openGraph: { url: `https://seahorizonholidays.com/blog/${slug}`, title: post.title },
-    title: `${post.title} | Sea Horizon Holidays Blog`,
+    title: `${post.title}`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
   };

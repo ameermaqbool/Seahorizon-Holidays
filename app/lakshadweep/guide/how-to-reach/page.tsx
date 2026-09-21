@@ -7,7 +7,7 @@ import { Plane, Ship, MapPin, Clock, Users, AlertCircle } from 'lucide-react';
 export const metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/how-to-reach' },
   openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide/how-to-reach' },
-  title: 'How to Reach Lakshadweep — Flights, Ships & Transport Guide | Sea Horizon Holidays',
+  title: 'How to Reach Lakshadweep — Flights, Ships & Transport Guide',
   description: 'Complete guide to reaching Lakshadweep. Fly to Agatti Airport from Kochi or take ships from mainland. Inter-island transfers and booking information included.',
   keywords: 'Lakshadweep transport, Agatti Airport, flights to Lakshadweep, ships to Lakshadweep, how to reach',
 };

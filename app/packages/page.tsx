@@ -10,7 +10,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/packages' },
   openGraph: { url: 'https://seahorizonholidays.com/packages' },
-  title: 'Lakshadweep Tour Packages | Sea Horizon Holidays',
+  title: 'Lakshadweep Tour Packages',
   description: 'Explore our comprehensive Lakshadweep tour packages. From budget-friendly trips to luxury honeymoon packages, find the perfect island getaway.',
   keywords: 'Lakshadweep packages, Lakshadweep tours, island packages, honeymoon packages, budget tours',
 };

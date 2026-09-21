@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PackageDetailsPageProps): Pro
   return {
     alternates: { canonical: `https://seahorizonholidays.com/packages/${slug}` },
     openGraph: { url: `https://seahorizonholidays.com/packages/${slug}`, title: pkg.title },
-    title: `${pkg.title} | Sea Horizon Holidays`,
+    title: `${pkg.title}`,
     description: pkg.description,
     keywords: `${pkg.title}, Lakshadweep, ${pkg.islands.join(', ')}, ${pkg.category}`,
   };

@@ -23,12 +23,14 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const solidHeader = isScrolled || pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,7 +40,7 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled
+        solidHeader
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20"
           : "bg-transparent"
       )}
@@ -57,7 +59,7 @@ export function Header() {
             />
             <span className={cn(
               "transition-colors duration-300",
-              isScrolled ? "text-primary-700" : "text-white text-shadow-md"
+              solidHeader ? "text-primary-700" : "text-white drop-shadow-sm"
             )}>
               Sea Horizon
             </span>
@@ -72,12 +74,12 @@ export function Header() {
                 className={cn(
                   "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus-ring",
                   pathname === item.href
-                    ? isScrolled
+                    ? solidHeader
                       ? "bg-primary-100 text-primary-800"
                       : "bg-white/20 text-white"
-                    : isScrolled
+                    : solidHeader
                       ? "text-gray-600 hover:text-primary-700 hover:bg-primary-50"
-                      : "text-white/90 hover:text-white hover:bg-white/10 text-shadow-md"
+                      : "text-white/90 hover:text-white hover:bg-white/10 drop-shadow-sm"
                 )}
               >
                 {item.name}
@@ -96,7 +98,7 @@ export function Header() {
               <Phone className="h-4 w-4" />
               <span className={cn(
                 "transition-colors duration-300",
-                isScrolled ? "text-gray-600" : "text-white/90 text-shadow-md"
+                solidHeader ? "text-gray-600" : "text-white/90 drop-shadow-sm"
               )}>
                 +91 8075301729
               </span>
@@ -117,10 +119,13 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
+            aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
               "lg:hidden p-2 rounded-md transition-colors duration-200 focus-ring",
-              isScrolled ? "text-gray-600 hover:text-primary-700" : "text-white text-shadow-md hover:text-white/80"
+              solidHeader ? "text-gray-600 hover:text-primary-700" : "text-white drop-shadow-sm hover:text-white/80"
             )}
           >
             {isMobileMenuOpen ? (
@@ -133,7 +138,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
+          <div id="mobile-navigation" className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Link

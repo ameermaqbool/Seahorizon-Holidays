@@ -8,7 +8,7 @@ import { Shield, Award, Clock, Users, MapPin, Phone, Star, CheckCircle, Heart, A
 export const metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/why-us' },
   openGraph: { url: 'https://seahorizonholidays.com/why-us' },
-  title: 'Why Book with Sea Horizon Holidays — Local Experts, Permits, 24×7 Support',
+  title: { absolute: 'Why Book with Sea Horizon Holidays — Local Experts, Permits, 24×7 Support' },
   description: 'Discover why Sea Horizon Holidays is Lakshadweep\'s trusted DMC. Local expertise, government permits handled, 24×7 WhatsApp support, and 500+ happy travelers.',
   keywords: 'Lakshadweep DMC, local tour operator, permits handled, WhatsApp support, trusted travel company',
 };

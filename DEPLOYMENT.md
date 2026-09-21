@@ -105,8 +105,11 @@ execution-environment limitation, not evidence that the site's DNS is absent.
 | NS | @ | ns51.domaincontrol.com, ns52.domaincontrol.com | Same | Keep; no nameserver migration required for an external-DNS repair |
 | AAAA / CAA / DS | @ | None observed | No changes proposed | Do not add/delete records without a specific diagnosed reason |
 
-The Netlify site name/ID and *.netlify.app address have not been retrieved. Do not
-substitute a guessed hostname. High-Performance Edge has account-specific values.
+GitHub reports two connected Netlify projects: `seahorizonholidays` and
+`seahorizonholidays1`. Both provider subdomains return HTTPS 200. Both automatically
+built PR #1 previews successfully. The project owning the custom domain is still
+unconfirmed; do not choose either hostname as a DNS target without inspecting
+its domain aliases. High-Performance Edge has account-specific values.
 Do not modify MX/TXT or other mail records. Export the complete zone before any
 approved change; retain that export and the previous deploy as rollback points.
 
@@ -125,7 +128,7 @@ preload or includeSubDomains until every relevant hostname is known to support T
 - Pexels image delivery: all 43 public asset HEAD requests were refused with 403
   from this test environment. This is not proof those assets fail for visitors;
   verify provider Image CDN access in the preview before release.
-- Core Web Vitals / Lighthouse and independent India + international checks.
+- Full Lighthouse diagnostics, Core Web Vitals and independent India + international checks.
 - Google Search Console verification and sitemap submission by the property owner.
 - Owner-approved privacy/booking terms; broken policy links were replaced with
   a contact enquiry link rather than publishing invented policies.
@@ -150,4 +153,33 @@ preload or includeSubDomains until every relevant hostname is known to support T
   before the framework/security upgrade (same file-summing method, gzip bytes).
   Images now have responsive sources and CDN optimization, but no measured
   Core Web Vitals improvement is claimed. Browser rendering and image delivery
-  remain mandatory release checks.
+  remain mandatory release checks for every major route and mobile layout.
+
+## Hosted preview verification (2026-09-21)
+
+- Draft PR: https://github.com/ameermaqbool/Seahorizon-Holidays/pull/1
+- Initial repair commit `ee68c153dcc0f555b27a197c06f6543acc465297` passed GitHub
+  Production checks and both Netlify Deploy Preview builds.
+- Hosted HTTP checks: all 31 sitemap pages returned 200 with preview noindex
+  and nosniff headers; robots and favicon returned 200, and an unknown page 404.
+- Preview: https://deploy-preview-1--seahorizonholidays.netlify.app/
+- Second connected project: https://deploy-preview-1--seahorizonholidays1.netlify.app/
+- Both preview homepages and both existing production *.netlify.app homepages
+  returned HTTPS 200. Custom-domain TLS remains a separate unresolved issue.
+- Browser navigation home → contact → packages → package detail worked. Blank
+  enquiry submission was stopped by required-field validation; no enquiry was sent.
+- Hero and all seven package-list images loaded through Netlify image optimization.
+  The earlier shell-only Pexels 403 response did not reproduce in this browser.
+- Observed console errors originated from the browser extension, not the website.
+- Netlify's initial one-page Lighthouse comments reported performance 70/75,
+  accessibility 90, best practices 92 and SEO 100. These are lab scores, not
+  real-user Core Web Vitals or proof of India-wide availability.
+- Visual inspection found the hero's white-on-white WhatsApp button, header color
+  classes lost through a class-merging conflict, and duplicate title branding.
+  A follow-up fix restores contrast and concise titles, names the mobile menu
+  control, and removes a redundant external font stylesheet.
+- Netlify Google sign-in returned 502 / Connection refused in this cloud browser;
+  authentication did not complete. No DNS, domain alias, certificate, production
+  branch setting, or existing deployment was changed.
+- Existing promotional offers, dated blog content, testimonials and review counts
+  were preserved and require owner verification for current accuracy.

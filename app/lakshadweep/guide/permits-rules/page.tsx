@@ -7,7 +7,7 @@ import { FileText, Shield, AlertCircle, CheckCircle, Users, Clock } from 'lucide
 export const metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/permits-rules' },
   openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide/permits-rules' },
-  title: 'Lakshadweep Permits & Rules — Entry Requirements Guide | Sea Horizon Holidays',
+  title: 'Lakshadweep Permits & Rules — Entry Requirements Guide',
   description: 'Complete guide to Lakshadweep entry permits, documentation requirements, and local rules. We handle all permit formalities for hassle-free travel.',
   keywords: 'Lakshadweep permits, entry permit, documentation, travel rules, restricted areas, permit requirements',
 };

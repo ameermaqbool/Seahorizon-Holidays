@@ -9,7 +9,7 @@ import { blogPosts } from '@/lib/data/blog';
 export const metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/blog' },
   openGraph: { url: 'https://seahorizonholidays.com/blog' },
-  title: 'Lakshadweep Travel Blog — Tips, Guides & Stories | Sea Horizon Holidays',
+  title: 'Lakshadweep Travel Blog — Tips, Guides & Stories',
   description: 'Discover Lakshadweep through our travel blog. Expert tips, destination guides, travel stories, and insider insights from local experts.',
   keywords: 'Lakshadweep blog, travel tips, destination guides, coral islands, travel stories, local insights',
 };

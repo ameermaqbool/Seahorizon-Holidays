@@ -12,6 +12,8 @@ const config: Config = {
       colors: {
         // Sea Horizon brand colors
         primary: {
+          DEFAULT: '#0284c7',
+          foreground: '#ffffff',
           50: '#f0f9ff',
           100: '#e0f2fe',
           200: '#bae6fd',

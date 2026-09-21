@@ -7,7 +7,7 @@ import { Clock, MapPin, Users, FileText, Plane, Calendar } from 'lucide-react';
 export const metadata = {
   alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide' },
   openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide' },
-  title: 'Lakshadweep Travel Guide — Complete Planning Information | Sea Horizon Holidays',
+  title: 'Lakshadweep Travel Guide — Complete Planning Information',
   description: 'Complete Lakshadweep travel guide with best time to visit, how to reach, permits, rules, and essential travel information.',
   keywords: 'Lakshadweep travel guide, permits, best time to visit, how to reach, travel tips',
 };
