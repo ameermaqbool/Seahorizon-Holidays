@@ -1,3 +1,5 @@
+
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -20,7 +22,7 @@ export function BlogTeaser() {
               Latest from Our Travel Blog
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl">
-              Insider tips, destination guides, and travel inspiration to help you 
+              Insider tips, destination guides, and travel inspiration to help you
               make the most of your Lakshadweep adventure
             </p>
           </div>
@@ -34,26 +36,26 @@ export function BlogTeaser() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredPosts.map((post, index) => (
-            <Card 
+            <Card
               key={post.slug}
               className="group overflow-hidden hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image width={800} height={500} sizes="(max-width: 768px) 100vw, 33vw"
                   src={post.cover}
                   alt={post.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                
+
                 {/* Tags */}
                 <div className="absolute top-4 left-4 flex space-x-2">
                   {post.tags.slice(0, 2).map((tag) => (
-                    <Badge 
+                    <Badge
                       key={tag}
-                      variant="secondary" 
+                      variant="secondary"
                       className="bg-white/90 text-gray-800 text-xs"
                     >
                       {tag}
@@ -76,9 +78,9 @@ export function BlogTeaser() {
                   <div className="flex items-center space-x-4">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
-                      {new Date(post.publishedAt).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric' 
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
                       })}
                     </div>
                     <div className="flex items-center">
@@ -89,7 +91,7 @@ export function BlogTeaser() {
                 </div>
 
                 <Button asChild variant="ghost" className="w-full justify-between p-0 h-auto">
-                  <Link 
+                  <Link
                     href={`/blog/${post.slug}`}
                     className="text-primary-600 hover:text-primary-700 font-medium"
                   >

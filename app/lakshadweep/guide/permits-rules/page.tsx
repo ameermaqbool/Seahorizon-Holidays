@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { FileText, Shield, AlertCircle, CheckCircle, Users, Clock } from 'lucide-react';
 
 export const metadata = {
-  title: 'Lakshadweep Permits & Rules — Entry Requirements Guide | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/permits-rules' },
+  openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide/permits-rules' },
+  title: 'Lakshadweep Permits & Rules — Entry Requirements Guide',
   description: 'Complete guide to Lakshadweep entry permits, documentation requirements, and local rules. We handle all permit formalities for hassle-free travel.',
   keywords: 'Lakshadweep permits, entry permit, documentation, travel rules, restricted areas, permit requirements',
 };
@@ -132,7 +134,7 @@ const documents = [
 ];
 
 export default function PermitsRulesPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I need help with Lakshadweep permits and documentation. Can you assist me?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I need help with Lakshadweep permits and documentation. Can you assist me?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -162,7 +164,7 @@ export default function PermitsRulesPage() {
               Lakshadweep Permits & Rules
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Essential information about entry permits, documentation requirements, and local 
+              Essential information about entry permits, documentation requirements, and local
               regulations. We handle all permit formalities for our guests.
             </p>
           </div>
@@ -181,7 +183,7 @@ export default function PermitsRulesPage() {
                 We Handle All Permits for You!
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Skip the paperwork hassle. When you book with Sea Horizon Holidays, 
+                Skip the paperwork hassle. When you book with Sea Horizon Holidays,
                 we process all entry permits and documentation on your behalf.
               </p>
               <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
@@ -206,7 +208,7 @@ export default function PermitsRulesPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {permitTypes.map((permit, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="hover:shadow-xl transition-all duration-500 animate-fade-in"
                 style={{ animationDelay: `${index * 200}ms` }}
@@ -221,9 +223,9 @@ export default function PermitsRulesPage() {
                       <p className="text-gray-600">Valid for {permit.validity}</p>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-700 mb-6">{permit.description}</p>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-2">Accessible Islands:</h4>
@@ -233,7 +235,7 @@ export default function PermitsRulesPage() {
                         ))}
                       </div>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-3">Required Documents:</h4>
                       <ul className="space-y-2">
@@ -266,7 +268,7 @@ export default function PermitsRulesPage() {
           <Card className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {documents.map((doc, index) => (
-                <div 
+                <div
                   key={index}
                   className={`flex items-start space-x-4 p-4 rounded-lg ${
                     doc.mandatory ? 'bg-red-50 border border-red-200' : 'bg-gray-50 border border-gray-200'
@@ -292,8 +294,8 @@ export default function PermitsRulesPage() {
             </div>
             <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
               <p className="text-sm text-amber-800">
-                <strong>Note:</strong> Documents marked with * are mandatory. 
-                We'll provide you with a complete checklist when you book with us.
+                <strong>Note:</strong> Documents marked with * are mandatory.
+                We&apos;ll provide you with a complete checklist when you book with us.
               </p>
             </div>
           </Card>
@@ -314,7 +316,7 @@ export default function PermitsRulesPage() {
             {localRules.map((category, index) => {
               const Icon = category.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="hover:shadow-lg transition-shadow animate-fade-in"
                   style={{ animationDelay: `${index * 150}ms` }}
@@ -354,7 +356,7 @@ export default function PermitsRulesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {restrictedAreas.map((area, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="border-red-200 bg-red-50 animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -422,11 +424,11 @@ export default function PermitsRulesPage() {
             Skip the Permit Hassle
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Let our experts handle all permit formalities while you focus on planning 
+            Let our experts handle all permit formalities while you focus on planning
             your dream vacation. We guarantee 100% permit approval for all our guests.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -435,7 +437,7 @@ export default function PermitsRulesPage() {
                 Get Permit-Free Booking
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

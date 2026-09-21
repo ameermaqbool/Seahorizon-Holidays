@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { packages } from '@/lib/data/packages';
@@ -5,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  MapPin, 
-  Clock, 
-  Users, 
-  Star, 
-  Phone, 
+import {
+  MapPin,
+  Clock,
+  Users,
+  Star,
+  Phone,
   Mail,
   Calendar,
   Camera,
@@ -21,9 +22,7 @@ import {
 } from 'lucide-react';
 
 interface PackageDetailsPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -33,8 +32,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PackageDetailsPageProps): Promise<Metadata> {
-  const pkg = packages.find(p => p.slug === params.slug);
-  
+  const { slug } = await params;
+  const pkg = packages.find(p => p.slug === slug);
+
   if (!pkg) {
     return {
       title: 'Package Not Found',
@@ -42,14 +42,17 @@ export async function generateMetadata({ params }: PackageDetailsPageProps): Pro
   }
 
   return {
-    title: `${pkg.title} | Sea Horizon Holidays`,
+    alternates: { canonical: `https://seahorizonholidays.com/packages/${slug}` },
+    openGraph: { url: `https://seahorizonholidays.com/packages/${slug}`, title: pkg.title },
+    title: `${pkg.title}`,
     description: pkg.description,
     keywords: `${pkg.title}, Lakshadweep, ${pkg.islands.join(', ')}, ${pkg.category}`,
   };
 }
 
-export default function PackageDetailsPage({ params }: PackageDetailsPageProps) {
-  const pkg = packages.find(p => p.slug === params.slug);
+export default async function PackageDetailsPage({ params }: PackageDetailsPageProps) {
+  const { slug } = await params;
+  const pkg = packages.find(p => p.slug === slug);
 
   if (!pkg) {
     notFound();
@@ -59,7 +62,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="relative h-96 md:h-[500px] overflow-hidden">
-        <img
+        <Image priority width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
           src={pkg.images[0]}
           alt={pkg.title}
           className="w-full h-full object-cover"
@@ -95,7 +98,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 leading-relaxed mb-6">{pkg.description}</p>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-4 bg-blue-50 rounded-lg">
                     <Clock className="h-8 w-8 text-blue-600 mx-auto mb-2" />
@@ -159,7 +162,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-green-600">What's Included</CardTitle>
+                      <CardTitle className="text-green-600">What&apos;s Included</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2">
@@ -172,10 +175,10 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-red-600">What's Not Included</CardTitle>
+                      <CardTitle className="text-red-600">What&apos;s Not Included</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2">
@@ -365,7 +368,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                   </p>
                   <Button asChild className="bg-[#25d366] hover:bg-[#128c7e] text-white" size="lg">
                     <a
-                      href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to get a detailed quote for the ${pkg.title} package. Please share pricing and availability.`}
+                      href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to get a detailed quote for the ${pkg.title} package. Please share pricing and availability.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -379,7 +382,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {pkg.images.map((image, index) => (
                     <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
-                      <img
+                      <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
                         src={image}
                         alt={`${pkg.title} ${index + 1}`}
                         className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
@@ -416,12 +419,12 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   className="w-full bg-[#25d366] hover:bg-[#128c7e] text-white"
                 >
                   <a
-                    href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote with pricing?`}
+                    href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote with pricing?`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -429,10 +432,10 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                     Get Quote on WhatsApp
                   </a>
                 </Button>
-                
-                <Button 
-                  asChild 
-                  variant="outline" 
+
+                <Button
+                  asChild
+                  variant="outline"
                   className="w-full"
                 >
                   <a href="tel:8075301729">
@@ -440,10 +443,10 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                     Call Now
                   </a>
                 </Button>
-                
-                <Button 
-                  asChild 
-                  variant="outline" 
+
+                <Button
+                  asChild
+                  variant="outline"
                   className="w-full"
                 >
                   <a href="mailto:info@seahorizonholidays.com">

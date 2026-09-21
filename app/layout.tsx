@@ -55,12 +55,12 @@ export const metadata: Metadata = {
       "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
     ],
   },
-  alternates: {
-    canonical: "https://seahorizonholidays.com",
-  },
   verification: {
-    google: "your-google-site-verification",
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   },
+  icons: { icon: '/favicon.jpg', apple: '/apple-touch-icon.png' },
+  robots: process.env.NEXT_PUBLIC_DEPLOY_ENV === 'preview'
+    ? { index: false, follow: false } : { index: true, follow: true },
   category: "travel",
 };
 
@@ -73,7 +73,7 @@ const organizationLD = {
   description:
     "Premier Lakshadweep tour operator and destination management company specializing in coral island experiences, permits, and customized trips.",
   url: "https://seahorizonholidays.com",
-  logo: "https://seahorizonholidays.com/logo.png",
+  logo: "https://seahorizonholidays.com/logo.png.jpg",
   image:
     "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop",
   telephone: "+91-8075301729",
@@ -105,7 +105,6 @@ const organizationLD = {
     telephone: "+91-8075301729",
     contactType: "Customer Service",
     availableLanguage: ["English", "Hindi"],
-    contactOption: "TollFree",
   },
   foundingDate: "2020",
   slogan: "Lakshadweep, planned end-to-end",

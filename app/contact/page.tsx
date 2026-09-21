@@ -1,13 +1,14 @@
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { SecureContactForm } from '@/components/forms/secure-contact-form';
 import { MessageCircle, Phone, Mail, MapPin, Clock, Users } from 'lucide-react';
 
 export const metadata = {
-  title: 'Contact Sea Horizon Holidays — 24×7 WhatsApp Support | Lakshadweep Experts',
+  alternates: { canonical: 'https://seahorizonholidays.com/contact' },
+  openGraph: { url: 'https://seahorizonholidays.com/contact' },
+  title: { absolute: 'Contact Sea Horizon Holidays — 24×7 WhatsApp Support | Lakshadweep Experts' },
   description: 'Contact Sea Horizon Holidays for Lakshadweep travel planning. 24×7 WhatsApp support, phone, email. Local experts ready to help plan your perfect coral island vacation.',
   keywords: 'contact Sea Horizon Holidays, Lakshadweep travel support, WhatsApp booking, travel experts, customer service',
 };
@@ -79,7 +80,7 @@ const whyContactUs = [
 ];
 
 export default function ContactPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to get in touch regarding my Lakshadweep travel plans.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to get in touch regarding my Lakshadweep travel plans.`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -94,7 +95,7 @@ export default function ContactPage() {
               Contact Our Local Experts
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Ready to plan your Lakshadweep adventure? Our local experts are here to help 
+              Ready to plan your Lakshadweep adventure? Our local experts are here to help
               with personalized recommendations, instant quotes, and 24×7 support.
             </p>
           </div>
@@ -119,9 +120,9 @@ export default function ContactPage() {
               const isWhatsApp = method.method === 'WhatsApp';
               const isPhone = method.method === 'Phone';
               const isEmail = method.method === 'Email';
-              
+
               return (
-                <Card 
+                <Card
                   key={index}
                   className="group hover:shadow-xl transition-all duration-500 animate-fade-in text-center"
                   style={{ animationDelay: `${index * 150}ms` }}
@@ -140,7 +141,7 @@ export default function ContactPage() {
                       <p className="font-semibold text-gray-900 mb-1">{method.contact}</p>
                       <p className="text-sm text-gray-500">{method.available}</p>
                     </div>
-                    <Button 
+                    <Button
                       asChild
                       className={method.color}
                       size="lg"
@@ -178,57 +179,7 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Send Us a Message
                 </h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="Your first name" required />
-                    </div>
-                    <div>
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Your last name" required />
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" required />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" type="tel" placeholder="+91 9876543210" required />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="travelDates">Preferred Travel Dates</Label>
-                    <Input id="travelDates" placeholder="e.g., 15-20 March 2025" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="travelers">Number of Travelers</Label>
-                    <Input id="travelers" placeholder="e.g., 2 adults, 1 child" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message">Your Message *</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us about your travel preferences, interests, budget, or any specific questions..."
-                      rows={5}
-                      required
-                    />
-                  </div>
-                  
-                  <Button type="submit" className="w-full bg-primary-600 hover:bg-primary-700" size="lg">
-                    Send Message
-                  </Button>
-                  
-                  <p className="text-sm text-gray-500 text-center">
-                    We'll respond within 2-4 hours during business hours
-                  </p>
-                </form>
+                <SecureContactForm />
               </CardContent>
             </Card>
 
@@ -239,7 +190,7 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">
                     Our Office
                   </h3>
-                  
+
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
                       <MapPin className="h-6 w-6 text-primary-600 mt-1 flex-shrink-0" />
@@ -248,7 +199,7 @@ export default function ContactPage() {
                         <p className="text-gray-600">{officeInfo.address}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start space-x-4">
                       <Clock className="h-6 w-6 text-primary-600 mt-1 flex-shrink-0" />
                       <div>
@@ -273,7 +224,7 @@ export default function ContactPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">
                     Why Contact Us?
                   </h3>
-                  
+
                   <div className="space-y-4">
                     {whyContactUs.map((reason, index) => {
                       const Icon = reason.icon;
@@ -311,11 +262,11 @@ export default function ContactPage() {
                     Emergency Contact During Your Trip
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    If you're currently traveling with us and need immediate assistance, 
+                    If you&apos;re currently traveling with us and need immediate assistance,
                     our 24×7 emergency support is always available.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button 
+                    <Button
                       asChild
                       className="bg-red-600 hover:bg-red-700 text-white"
                     >
@@ -324,12 +275,12 @@ export default function ContactPage() {
                         Emergency WhatsApp
                       </a>
                     </Button>
-                    <Button 
+                    <Button
                       asChild
                       variant="outline"
                       className="border-red-300 text-red-700 hover:bg-red-100"
                     >
-                      <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}>
+                      <a href={`tel:+918075301729`}>
                         <Phone className="h-4 w-4 mr-2" />
                         Emergency Call
                       </a>
@@ -347,11 +298,11 @@ export default function ContactPage() {
             Ready to Start Planning?
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Don't wait! Our local experts are standing by to help you create the perfect 
+            Don&apos;t wait! Our local experts are standing by to help you create the perfect
             Lakshadweep experience. Get your personalized quote in minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -361,15 +312,15 @@ export default function ContactPage() {
                 Start WhatsApp Chat
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-primary-600"
             >
-              <a href="/packages">
+              <Link href="/packages">
                 Browse Tour Packages
-              </a>
+              </Link>
             </Button>
           </div>
         </section>

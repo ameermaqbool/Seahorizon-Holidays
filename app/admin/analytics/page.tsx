@@ -25,12 +25,10 @@ export default function AnalyticsDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchAnalytics();
-  }, []);
-
-  const fetchAnalytics = async () => {
+    const fetchAnalytics = async () => {
     try {
       const response = await fetch('/api/analytics');
+      if (!response.ok) throw new Error('Analytics is not configured');
       const analyticsData = await response.json();
       setData(analyticsData);
     } catch (error) {
@@ -39,6 +37,9 @@ export default function AnalyticsDashboard() {
       setLoading(false);
     }
   };
+
+    void fetchAnalytics();
+  }, []);
 
   if (loading) {
     return (

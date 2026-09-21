@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { Sun, Cloud, Waves, Thermometer, Wind, Calendar } from 'lucide-react';
 
 export const metadata = {
-  title: 'Best Time to Visit Lakshadweep — Weather Guide 2025 | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/best-time-to-visit' },
+  openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide/best-time-to-visit' },
+  title: 'Best Time to Visit Lakshadweep — Weather Guide 2025',
   description: 'Complete weather guide for Lakshadweep. October to March is ideal with calm seas, clear skies, and perfect conditions for water sports and island hopping.',
   keywords: 'Lakshadweep weather, best time to visit, October to March, monsoon season, water sports weather',
 };
@@ -152,7 +154,7 @@ const seasons = [
 ];
 
 export default function BestTimeToVisitPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to plan my Lakshadweep trip for the best weather. Can you help me choose the right dates?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to plan my Lakshadweep trip for the best weather. Can you help me choose the right dates?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -182,7 +184,7 @@ export default function BestTimeToVisitPage() {
               Best Time to Visit Lakshadweep
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Plan your perfect island getaway with our comprehensive weather guide. 
+              Plan your perfect island getaway with our comprehensive weather guide.
               October to March offers ideal conditions for all activities.
             </p>
           </div>
@@ -201,7 +203,7 @@ export default function BestTimeToVisitPage() {
                 October to March is Perfect!
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                The ideal time to visit Lakshadweep is during the winter months when you'll enjoy 
+                The ideal time to visit Lakshadweep is during the winter months when you&apos;ll enjoy
                 calm seas, clear skies, and perfect weather for all water activities.
               </p>
               <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
@@ -220,7 +222,7 @@ export default function BestTimeToVisitPage() {
               Seasonal Overview
             </h2>
             <p className="text-lg text-gray-600">
-              Understanding Lakshadweep's three distinct seasons
+              Understanding Lakshadweep&apos;s three distinct seasons
             </p>
           </div>
 
@@ -228,7 +230,7 @@ export default function BestTimeToVisitPage() {
             {seasons.map((season, index) => {
               const Icon = season.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className={`border-2 ${season.color} animate-fade-in`}
                   style={{ animationDelay: `${index * 150}ms` }}
@@ -241,9 +243,9 @@ export default function BestTimeToVisitPage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{season.name}</h3>
                       <p className="text-sm font-medium text-gray-600">{season.months}</p>
                     </div>
-                    
+
                     <p className="text-gray-700 mb-6">{season.description}</p>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-semibold text-green-700 mb-2">Pros:</h4>
@@ -256,7 +258,7 @@ export default function BestTimeToVisitPage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-red-700 mb-2">Cons:</h4>
                         <ul className="space-y-1">
@@ -289,11 +291,11 @@ export default function BestTimeToVisitPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {monthlyWeather.map((month, index) => (
-              <Card 
+              <Card
                 key={index}
                 className={`hover:shadow-lg transition-shadow animate-fade-in ${
-                  month.rating >= 4 ? 'border-green-200 bg-green-50' : 
-                  month.rating >= 3 ? 'border-yellow-200 bg-yellow-50' : 
+                  month.rating >= 4 ? 'border-green-200 bg-green-50' :
+                  month.rating >= 3 ? 'border-yellow-200 bg-yellow-50' :
                   'border-red-200 bg-red-50'
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -312,7 +314,7 @@ export default function BestTimeToVisitPage() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">Temperature:</span>
@@ -327,9 +329,9 @@ export default function BestTimeToVisitPage() {
                       <span className="font-medium">{month.seaCondition}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-700 text-sm mb-4">{month.description}</p>
-                  
+
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2 text-sm">Best Activities:</h4>
                     <div className="flex flex-wrap gap-1">
@@ -402,11 +404,11 @@ export default function BestTimeToVisitPage() {
             Ready to Plan Your Perfect Trip?
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Let our local experts help you choose the best dates and create an unforgettable 
+            Let our local experts help you choose the best dates and create an unforgettable
             Lakshadweep experience based on weather conditions and your preferences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -415,7 +417,7 @@ export default function BestTimeToVisitPage() {
                 Get Weather-Based Recommendations
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

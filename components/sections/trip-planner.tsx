@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -82,7 +84,7 @@ export function TripPlanner() {
 
       // Prepare WhatsApp message
       const whatsappMessage = `Hi Sea Horizon! I've planned my trip details:
-      
+
 📅 Travel Dates: ${formData.dates}
 👥 Travelers: ${formData.pax} people
 💰 Budget: ${formData.budget}
@@ -94,17 +96,6 @@ export function TripPlanner() {
 Recommended Package: ${recommended.title}
 
 Please share detailed itinerary and final pricing. Thank you!`;
-
-      // Send to Zoho CRM (mock)
-      const crmData = {
-        ...formData,
-        recommendedPackage: recommended.title,
-        timestamp: new Date().toISOString(),
-        source: 'website_trip_planner'
-      };
-
-      // In a real app, this would call your API route
-      console.log('CRM Data:', crmData);
 
       // Open WhatsApp
       const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent( whatsappMessage )}`;
@@ -137,7 +128,7 @@ Please share detailed itinerary and final pricing. Thank you!`;
             Plan Your Perfect Lakshadweep Trip
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Tell us about your dream vacation and get a personalized package recommendation 
+            Tell us about your dream vacation and get a personalized package recommendation
             with instant WhatsApp quote
           </p>
         </div>
@@ -309,7 +300,7 @@ Please share detailed itinerary and final pricing. Thank you!`;
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <img
+                  <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" decoding="async"
                     src={recommendedPackage.gallery[0]?.src}
                     alt={recommendedPackage.title}
                     className="w-full h-48 object-cover rounded-lg"
@@ -366,7 +357,7 @@ Please share detailed itinerary and final pricing. Thank you!`;
                   Get Instant Recommendations
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Fill out the form to get personalized package recommendations 
+                  Fill out the form to get personalized package recommendations
                   based on your preferences and budget.
                 </p>
                 <ul className="text-sm text-gray-700 space-y-2 text-left max-w-sm mx-auto">

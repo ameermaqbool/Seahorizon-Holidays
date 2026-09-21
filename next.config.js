@@ -1,62 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',   // 🚀 Make build output static for Netlify
-  trailingSlash: false,
-  skipTrailingSlashRedirect: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  images: {
-    unoptimized: true,
-    formats: ['image/webp', 'image/avif'],
-    minimumCacheTTL: 31536000,
-  },
-  compress: true,
   poweredByHeader: false,
-  generateEtags: false,
-  swcMinify: false,
-
-  // Force a unique build ID on every deploy → busts cache
-  generateBuildId: async () => {
-    return Date.now().toString();
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 'images.pexels.com' }],
+    formats: ['image/avif', 'image/webp'],
   },
-
-  // Disable aggressive caching in dev/export mode
-  onDemandEntries: {
-    maxInactiveAge: 0,
-    pagesBufferLength: 0,
+  async redirects() {
+    return [{ source: '/:path*', has: [{ type: 'host', value: 'www.seahorizonholidays.com' }],
+      destination: 'https://seahorizonholidays.com/:path*', permanent: true }];
   },
-
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-
-    // Optimize bundle splitting
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },
-    };
-
-    return config;
+  async headers() {
+    return [{ source: '/:path*', headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+    ] }, { source: '/sw.js', headers: [
+      { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+    ] }];
   },
 };
-
 module.exports = nextConfig;

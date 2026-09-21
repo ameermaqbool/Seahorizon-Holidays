@@ -1,10 +1,9 @@
+import Image from 'next/image';
 import { notFound } from "next/navigation";
 import { islands } from "@/lib/data/islands";
 
 interface IslandPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 // Required for static export
@@ -14,21 +13,31 @@ export function generateStaticParams() {
   }));
 }
 
-export default function IslandPage({ params }: IslandPageProps) {
-  const island = islands.find((i) => i.slug === params.slug);
+export async function generateMetadata({ params }: IslandPageProps) {
+  const { slug } = await params;
+  const island = islands.find(i => i.slug === slug);
+  if (!island) return { title: 'Island not found' };
+  return { title: `${island.name} Island Guide`, description: island.description,
+    alternates: { canonical: `https://seahorizonholidays.com/lakshadweep/islands/${slug}` },
+    openGraph: { title: `${island.name} Island Guide`, url: `https://seahorizonholidays.com/lakshadweep/islands/${slug}` } };
+}
+
+export default async function IslandPage({ params }: IslandPageProps) {
+  const { slug } = await params;
+  const island = islands.find((i) => i.slug === slug);
 
   if (!island) {
     notFound();
   }
 
   return (
-    <main className="pt-24 px-8 max-w-4xl mx-auto">
+    <section className="pt-24 px-8 max-w-4xl mx-auto">
       <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 mb-6">
         {island.name}
       </h1>
       <p className="text-lg text-gray-600 mb-8">{island.description}</p>
 
-      <img
+      <Image priority width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
         src={island.image}
         alt={island.name}
         className="w-full h-80 object-cover rounded-lg mb-8 shadow-md"
@@ -75,6 +84,6 @@ export default function IslandPage({ params }: IslandPageProps) {
           <li key={idx}>{note}</li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 }

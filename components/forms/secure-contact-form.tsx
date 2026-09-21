@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { sanitizeInput, validateEmail, validatePhone } from '@/lib/utils/security';
+import { whatsappUrl } from '@/lib/contact';
 import { toast } from 'sonner';
 
 interface ContactFormData {
@@ -28,7 +29,7 @@ export function SecureContactForm() {
     travelDates: '',
     travelers: '',
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
 
@@ -61,7 +62,7 @@ export function SecureContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       toast.error('Please correct the errors in the form');
       return;
@@ -76,31 +77,14 @@ export function SecureContactForm() {
         return acc;
       }, {} as any);
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(sanitizedData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        toast.success(result.message);
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          message: '',
-          travelDates: '',
-          travelers: '',
-        });
-      } else {
-        toast.error(result.error || 'An error occurred');
-      }
+      const message = `Hi Sea Horizon! I would like to enquire about a trip.
+Name: ${sanitizedData.firstName} ${sanitizedData.lastName}
+Email: ${sanitizedData.email}
+Phone: ${sanitizedData.phone}
+Travel dates: ${sanitizedData.travelDates}
+Travelers: ${sanitizedData.travelers}
+Message: ${sanitizedData.message}`;
+      window.location.assign(whatsappUrl(message));
     } catch (error) {
       toast.error('Network error. Please try again.');
     } finally {
@@ -146,7 +130,7 @@ export function SecureContactForm() {
           )}
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="email">Email Address *</Label>
@@ -176,7 +160,7 @@ export function SecureContactForm() {
           )}
         </div>
       </div>
-      
+
       <div>
         <Label htmlFor="travelDates">Preferred Travel Dates</Label>
         <Input
@@ -186,7 +170,7 @@ export function SecureContactForm() {
           placeholder="e.g., 15-20 March 2025"
         />
       </div>
-      
+
       <div>
         <Label htmlFor="travelers">Number of Travelers</Label>
         <Input
@@ -196,7 +180,7 @@ export function SecureContactForm() {
           placeholder="e.g., 2 adults, 1 child"
         />
       </div>
-      
+
       <div>
         <Label htmlFor="message">Your Message *</Label>
         <Textarea
@@ -211,15 +195,16 @@ export function SecureContactForm() {
           <p className="text-red-500 text-sm mt-1">{errors.message}</p>
         )}
       </div>
-      
+
       <Button
         type="submit"
         className="w-full bg-primary-600 hover:bg-primary-700"
         size="lg"
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? 'Opening WhatsApp...' : 'Continue on WhatsApp'}
       </Button>
+      <p className="text-sm text-gray-600">Review your enquiry in WhatsApp and press Send to share it with us.</p>
     </form>
   );
 }

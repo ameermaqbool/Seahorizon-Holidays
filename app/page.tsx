@@ -1,3 +1,7 @@
+export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com' },
+  openGraph: { url: 'https://seahorizonholidays.com' },
+};
 import { Hero } from '@/components/sections/hero';
 import { TripPlanner } from '@/components/sections/trip-planner';
 import { FeaturedPackages } from '@/components/sections/featured-packages';
@@ -12,7 +16,7 @@ export default function Home() {
     <div className="min-h-screen">
       <Hero />
       <PromoCarousel />
-      
+
       <TripPlanner />
       <FeaturedPackages />
       <TrustBadges />

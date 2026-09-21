@@ -1,7 +1,13 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
+  NODE_VERSION = "22"
+
+# Netlify installs its current Next.js adapter automatically.
+# Set the production branch and GitHub integration in the Netlify dashboard.
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_DEPLOY_ENV = "preview"
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_DEPLOY_ENV = "preview"

@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Instagram, Facebook, Youtube, Play } from 'lucide-
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Sea Horizon Holidays</h3>
             <p className="text-slate-300 text-sm">
-              Your trusted Lakshadweep destination management company. 
+              Your trusted Lakshadweep destination management company.
               Local expertise, permits handled, end-to-end planning with 24×7 support.
             </p>
             <div className="flex space-x-3">
@@ -25,24 +25,6 @@ export function Footer() {
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-slate-800 rounded-full hover:bg-primary-600 transition-colors"
-                aria-label="Follow us on Facebook"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-slate-800 rounded-full hover:bg-primary-600 transition-colors"
-                aria-label="Subscribe to our YouTube channel"
-              >
-                <Youtube className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -102,7 +84,7 @@ export function Footer() {
                 <Phone className="h-4 w-4 mt-0.5 text-primary-400 flex-shrink-0" />
                 <div>
                   <p className="text-slate-300">24×7 WhatsApp Support</p>
-                  <a 
+                  <a
                     href="tel:+918075301729"
                     className="text-white hover:text-primary-400 transition-colors"
                   >
@@ -114,7 +96,7 @@ export function Footer() {
                 <Mail className="h-4 w-4 mt-0.5 text-primary-400 flex-shrink-0" />
                 <div>
                   <p className="text-slate-300">Email Inquiries</p>
-                  <a 
+                  <a
                     href="mailto:info@seahorizonholidays.com"
                     className="text-white hover:text-primary-400 transition-colors"
                   >
@@ -133,7 +115,7 @@ export function Footer() {
 
             {/* WhatsApp CTA */}
             <a
-              href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to plan my Lakshadweep trip.`}
+              href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to plan my Lakshadweep trip.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-full px-4 py-2 bg-[#25d366] hover:bg-[#128c7e] text-white rounded-md font-medium transition-colors"
@@ -151,12 +133,7 @@ export function Footer() {
               <p>© {currentYear} Sea Horizon Holidays. All rights reserved.</p>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-slate-400 hover:text-white transition-colors">
-                Terms of Service
-              </Link>
+              <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">Booking and privacy enquiries</Link>
               <Link href="/sitemap.xml" className="text-slate-400 hover:text-white transition-colors">
                 Sitemap
               </Link>

@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Star, Calendar, Users, Phone, Instagram } from 'lucide-react';
@@ -9,7 +11,7 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image fill priority sizes="100vw"
           src="https://images.pexels.com/photos/33485180/pexels-photo-33485180.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Lakshadweep Islands Paradise"
           className="w-full h-full object-cover"
@@ -71,7 +73,7 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-10 py-5 text-xl font-semibold rounded-lg"
+            className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-gray-900 px-10 py-5 text-xl font-semibold rounded-lg"
           >
             <a
               href="https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip."

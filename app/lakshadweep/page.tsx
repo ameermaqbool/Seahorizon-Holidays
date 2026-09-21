@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -5,7 +6,9 @@ import Link from 'next/link';
 import { MapPin, Clock, Users, Star, Waves, Camera, Heart, Anchor } from 'lucide-react';
 
 export const metadata = {
-  title: 'Lakshadweep Travel Guide — Islands, Culture, Activities | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep' },
+  openGraph: { url: 'https://seahorizonholidays.com/lakshadweep' },
+  title: 'Lakshadweep Travel Guide — Islands, Culture, Activities',
   description: 'Complete Lakshadweep travel guide covering all islands, best time to visit, permits, culture, activities, and local insights from Sea Horizon Holidays.',
   keywords: 'Lakshadweep guide, coral islands, Agatti, Bangaram, travel tips, permits, best time to visit',
 };
@@ -66,7 +69,7 @@ const quickGuides = [
 ];
 
 export default function LakshadweepPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to know more about Lakshadweep and plan my trip.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to know more about Lakshadweep and plan my trip.`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -81,11 +84,11 @@ export default function LakshadweepPage() {
               Discover Lakshadweep Islands
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8">
-              Pristine coral atolls, crystal-clear lagoons, and untouched beaches await. 
-              Explore India's tropical paradise with our comprehensive travel guide.
+              Pristine coral atolls, crystal-clear lagoons, and untouched beaches await.
+              Explore India&apos;s tropical paradise with our comprehensive travel guide.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 className="bg-white text-primary-600 hover:bg-gray-100"
@@ -94,7 +97,7 @@ export default function LakshadweepPage() {
                   Plan My Trip
                 </a>
               </Button>
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 variant="outline"
@@ -125,7 +128,7 @@ export default function LakshadweepPage() {
             {quickGuides.map((guide, index) => {
               const Icon = guide.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="group hover:shadow-xl transition-all duration-300 animate-fade-in"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -165,13 +168,13 @@ export default function LakshadweepPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {islands.map((island, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="group overflow-hidden hover:shadow-xl transition-all duration-500 animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
                     src={island.image}
                     alt={island.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -226,7 +229,7 @@ export default function LakshadweepPage() {
             ].map((activity, index) => {
               const Icon = activity.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="text-center p-4 hover:shadow-lg transition-shadow animate-fade-in"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -248,11 +251,11 @@ export default function LakshadweepPage() {
             Ready to Explore Lakshadweep?
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Let our local experts create the perfect itinerary for your coral island adventure. 
+            Let our local experts create the perfect itinerary for your coral island adventure.
             From permits to activities, we handle everything.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -261,7 +264,7 @@ export default function LakshadweepPage() {
                 View Tour Packages
               </Link>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

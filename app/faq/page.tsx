@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { MessageCircle, Phone, Mail, HelpCircle } from 'lucide-react';
 
 export const metadata = {
-  title: 'Lakshadweep Travel FAQ — Common Questions Answered | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/faq' },
+  openGraph: { url: 'https://seahorizonholidays.com/faq' },
+  title: 'Lakshadweep Travel FAQ — Common Questions Answered',
   description: 'Get answers to frequently asked questions about Lakshadweep travel, permits, packages, weather, activities, and booking with Sea Horizon Holidays.',
   keywords: 'Lakshadweep FAQ, travel questions, permits, booking, weather, activities, Sea Horizon Holidays',
 };
@@ -145,7 +147,7 @@ const faqCategories = [
 ];
 
 export default function FAQPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I have some questions about Lakshadweep travel that aren't covered in your FAQ. Can you help me?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I have some questions about Lakshadweep travel that aren't covered in your FAQ. Can you help me?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -160,8 +162,8 @@ export default function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Get answers to common questions about Lakshadweep travel, our packages, 
-              and booking process. Can't find what you're looking for? We're here to help!
+              Get answers to common questions about Lakshadweep travel, our packages,
+              and booking process. Can&apos;t find what you&apos;re looking for? We&apos;re here to help!
             </p>
           </div>
         </div>
@@ -200,7 +202,7 @@ export default function FAQPage() {
                   <h3 className="font-semibold text-gray-900 mb-2">Phone Call</h3>
                   <p className="text-sm text-gray-600 mb-3">Direct conversation</p>
                   <Button asChild size="sm" variant="outline">
-                    <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}>
+                    <a href={`tel:+918075301729`}>
                       Call Now
                     </a>
                   </Button>
@@ -235,7 +237,7 @@ export default function FAQPage() {
 
           <div className="space-y-8">
             {faqCategories.map((category, categoryIndex) => (
-              <Card 
+              <Card
                 key={categoryIndex}
                 className="animate-fade-in"
                 style={{ animationDelay: `${categoryIndex * 100}ms` }}
@@ -245,11 +247,11 @@ export default function FAQPage() {
                     <span className="text-2xl mr-3">{category.icon}</span>
                     <h3 className="text-2xl font-bold text-gray-900">{category.category}</h3>
                   </div>
-                  
+
                   <Accordion type="single" collapsible className="space-y-4">
                     {category.faqs.map((faq, faqIndex) => (
-                      <AccordionItem 
-                        key={faqIndex} 
+                      <AccordionItem
+                        key={faqIndex}
                         value={`${categoryIndex}-${faqIndex}`}
                         className="border border-gray-200 rounded-lg px-6"
                       >
@@ -279,11 +281,11 @@ export default function FAQPage() {
                 Still Have Questions?
               </h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Can't find the answer you're looking for? Our local experts are standing by 
+                Can&apos;t find the answer you&apos;re looking for? Our local experts are standing by
                 to provide personalized assistance and detailed information about your Lakshadweep trip.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
+                <Button
                   asChild
                   size="lg"
                   className="bg-[#25d366] hover:bg-[#128c7e] text-white"
@@ -293,7 +295,7 @@ export default function FAQPage() {
                     Ask on WhatsApp
                   </a>
                 </Button>
-                <Button 
+                <Button
                   asChild
                   size="lg"
                   variant="outline"
@@ -318,7 +320,7 @@ export default function FAQPage() {
               Quick links to helpful information
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: 'Travel Guide', href: '/lakshadweep/guide', description: 'Complete planning information' },
@@ -326,7 +328,7 @@ export default function FAQPage() {
               { title: 'Permits Info', href: '/lakshadweep/guide/permits-rules', description: 'Entry requirements' },
               { title: 'Tour Packages', href: '/packages', description: 'All-inclusive options' }
             ].map((resource, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="p-6 text-center hover:shadow-lg transition-shadow animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}

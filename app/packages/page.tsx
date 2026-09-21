@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { packages } from '@/lib/data/packages';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,14 +8,16 @@ import { MapPin, Clock, Users, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Lakshadweep Tour Packages | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/packages' },
+  openGraph: { url: 'https://seahorizonholidays.com/packages' },
+  title: 'Lakshadweep Tour Packages',
   description: 'Explore our comprehensive Lakshadweep tour packages. From budget-friendly trips to luxury honeymoon packages, find the perfect island getaway.',
   keywords: 'Lakshadweep packages, Lakshadweep tours, island packages, honeymoon packages, budget tours',
 };
 
 export default function PackagesPage() {
   const categories = ['All', 'Honeymoon', 'Adventure', 'Budget', 'Luxury', 'Family'];
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
@@ -36,7 +39,7 @@ export default function PackagesPage() {
           {packages.map((pkg) => (
             <Card key={pkg.id} className="group hover:shadow-xl transition-all duration-300 overflow-hidden border-0 shadow-lg">
               <div className="relative overflow-hidden">
-                <img
+                <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" decoding="async"
                   src={pkg.images[0]}
                   alt={pkg.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
@@ -100,12 +103,12 @@ export default function PackagesPage() {
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Link>
                   </Button>
-                  <Button 
-                    asChild 
+                  <Button
+                    asChild
                     className="w-full bg-[#25d366] hover:bg-[#128c7e] text-white"
                   >
                     <a
-                      href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote?`}
+                      href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide a detailed quote?`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

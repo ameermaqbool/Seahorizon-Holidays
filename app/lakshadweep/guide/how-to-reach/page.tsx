@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { Plane, Ship, MapPin, Clock, Users, AlertCircle } from 'lucide-react';
 
 export const metadata = {
-  title: 'How to Reach Lakshadweep — Flights, Ships & Transport Guide | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/how-to-reach' },
+  openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide/how-to-reach' },
+  title: 'How to Reach Lakshadweep — Flights, Ships & Transport Guide',
   description: 'Complete guide to reaching Lakshadweep. Fly to Agatti Airport from Kochi or take ships from mainland. Inter-island transfers and booking information included.',
   keywords: 'Lakshadweep transport, Agatti Airport, flights to Lakshadweep, ships to Lakshadweep, how to reach',
 };
@@ -81,7 +83,7 @@ const interIslandTransport = [
 ];
 
 export default function HowToReachPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I need help with transportation to Lakshadweep. Can you assist with flight/ship bookings?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I need help with transportation to Lakshadweep. Can you assist with flight/ship bookings?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -111,7 +113,7 @@ export default function HowToReachPage() {
               How to Reach Lakshadweep
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Complete guide to reaching the coral paradise. Choose between flights to Agatti 
+              Complete guide to reaching the coral paradise. Choose between flights to Agatti
               or ships from Kochi based on your budget and preferences.
             </p>
           </div>
@@ -161,7 +163,7 @@ export default function HowToReachPage() {
             {transportOptions.map((option, index) => {
               const Icon = option.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="hover:shadow-xl transition-all duration-500 animate-fade-in"
                   style={{ animationDelay: `${index * 200}ms` }}
@@ -176,9 +178,9 @@ export default function HowToReachPage() {
                         <p className="text-gray-600">{option.duration} • {option.frequency}</p>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-700 mb-6">{option.description}</p>
-                    
+
                     <div className="space-y-6">
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-3">Key Details:</h4>
@@ -191,7 +193,7 @@ export default function HowToReachPage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <h4 className="font-semibold text-green-700 mb-2">Advantages:</h4>
@@ -204,7 +206,7 @@ export default function HowToReachPage() {
                             ))}
                           </ul>
                         </div>
-                        
+
                         <div>
                           <h4 className="font-semibold text-red-700 mb-2">Considerations:</h4>
                           <ul className="space-y-1">
@@ -243,10 +245,10 @@ export default function HowToReachPage() {
                   Kochi (Cochin) International Airport
                 </h3>
                 <p className="text-gray-700 mb-6">
-                  The only airport with direct flights to Lakshadweep. Well-connected 
+                  The only airport with direct flights to Lakshadweep. Well-connected
                   to major Indian cities with excellent facilities.
                 </p>
-                
+
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Major Connections:</h4>
@@ -256,7 +258,7 @@ export default function HowToReachPage() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Facilities:</h4>
                     <ul className="space-y-1">
@@ -270,7 +272,7 @@ export default function HowToReachPage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-gray-100 rounded-lg p-6">
                 <h4 className="font-semibold text-gray-900 mb-4">Flight Information</h4>
                 <div className="space-y-3 text-sm">
@@ -313,7 +315,7 @@ export default function HowToReachPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {interIslandTransport.map((transport, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="p-6 text-center hover:shadow-lg transition-shadow animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -376,11 +378,11 @@ export default function HowToReachPage() {
             Let Us Handle Your Transportation
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Skip the hassle of booking flights and permits separately. Our packages include 
+            Skip the hassle of booking flights and permits separately. Our packages include
             all transportation, permits, and transfers for a seamless experience.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -389,7 +391,7 @@ export default function HowToReachPage() {
                 Get Transportation Help
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

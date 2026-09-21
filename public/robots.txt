@@ -1,9 +1,6 @@
-# *
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
-# Host
-Host: https://seahorizonholidays.com
-
-# Sitemaps
 Sitemap: https://seahorizonholidays.com/sitemap.xml

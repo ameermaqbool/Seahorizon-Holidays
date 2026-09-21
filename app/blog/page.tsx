@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,7 +7,9 @@ import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
 
 export const metadata = {
-  title: 'Lakshadweep Travel Blog — Tips, Guides & Stories | Sea Horizon Holidays',
+  alternates: { canonical: 'https://seahorizonholidays.com/blog' },
+  openGraph: { url: 'https://seahorizonholidays.com/blog' },
+  title: 'Lakshadweep Travel Blog — Tips, Guides & Stories',
   description: 'Discover Lakshadweep through our travel blog. Expert tips, destination guides, travel stories, and insider insights from local experts.',
   keywords: 'Lakshadweep blog, travel tips, destination guides, coral islands, travel stories, local insights',
 };
@@ -22,7 +25,7 @@ const categories = [
 export default function BlogPage() {
   const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I read your blog and would like to plan my Lakshadweep trip. Can you help me?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I read your blog and would like to plan my Lakshadweep trip. Can you help me?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -37,7 +40,7 @@ export default function BlogPage() {
               Lakshadweep Travel Blog
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Discover insider tips, destination guides, and travel stories from our local experts. 
+              Discover insider tips, destination guides, and travel stories from our local experts.
               Everything you need to plan your perfect coral island adventure.
             </p>
           </div>
@@ -73,7 +76,7 @@ export default function BlogPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {featuredPosts.map((post, index) => (
-              <Card 
+              <Card
                 key={post.slug}
                 className={`group overflow-hidden hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg ${
                   index === 0 ? 'lg:col-span-2 lg:row-span-2' : ''
@@ -81,14 +84,14 @@ export default function BlogPage() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className={`relative overflow-hidden ${index === 0 ? 'h-80' : 'h-48'}`}>
-                  <img
+                  <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" decoding="async"
                     src={post.cover}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
+
                   {/* Featured Badge */}
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-primary-500 text-white border-0 shadow-md">
@@ -99,9 +102,9 @@ export default function BlogPage() {
                   {/* Tags */}
                   <div className="absolute top-4 right-4 flex space-x-2">
                     {post.tags.slice(0, 2).map((tag) => (
-                      <Badge 
+                      <Badge
                         key={tag}
-                        variant="secondary" 
+                        variant="secondary"
                         className="bg-white/90 text-gray-800 text-xs"
                       >
                         {tag}
@@ -130,9 +133,9 @@ export default function BlogPage() {
                       </div>
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
-                        {new Date(post.publishedAt).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric' 
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric'
                         })}
                       </div>
                       <div className="flex items-center">
@@ -143,7 +146,7 @@ export default function BlogPage() {
                   </div>
 
                   <Button asChild variant="ghost" className="w-full justify-between p-0 h-auto">
-                    <Link 
+                    <Link
                       href={`/blog/${post.slug}`}
                       className="text-primary-600 hover:text-primary-700 font-medium"
                     >
@@ -170,26 +173,26 @@ export default function BlogPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post, index) => (
-              <Card 
+              <Card
                 key={post.slug}
                 className="group overflow-hidden hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg"
                 style={{ animationDelay: `${(index + 3) * 100}ms` }}
               >
                 <div className="relative overflow-hidden h-48">
-                  <img
+                  <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" decoding="async"
                     src={post.cover}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  
+
                   {/* Tags */}
                   <div className="absolute top-4 left-4 flex space-x-2">
                     {post.tags.slice(0, 2).map((tag) => (
-                      <Badge 
+                      <Badge
                         key={tag}
-                        variant="secondary" 
+                        variant="secondary"
                         className="bg-white/90 text-gray-800 text-xs"
                       >
                         {tag}
@@ -212,9 +215,9 @@ export default function BlogPage() {
                     <div className="flex items-center space-x-3">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
-                        {new Date(post.publishedAt).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric' 
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric'
                         })}
                       </div>
                       <div className="flex items-center">
@@ -225,7 +228,7 @@ export default function BlogPage() {
                   </div>
 
                   <Button asChild variant="ghost" className="w-full justify-between p-0 h-auto">
-                    <Link 
+                    <Link
                       href={`/blog/${post.slug}`}
                       className="text-primary-600 hover:text-primary-700 font-medium"
                     >
@@ -247,7 +250,7 @@ export default function BlogPage() {
                 Stay Updated with Travel Tips
               </h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Get the latest Lakshadweep travel insights, exclusive tips, and special offers 
+                Get the latest Lakshadweep travel insights, exclusive tips, and special offers
                 delivered straight to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
@@ -270,11 +273,11 @@ export default function BlogPage() {
             Ready to Plan Your Lakshadweep Adventure?
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Turn your travel inspiration into reality. Our local experts are ready to help 
+            Turn your travel inspiration into reality. Our local experts are ready to help
             you create the perfect Lakshadweep experience based on our insider knowledge.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -283,7 +286,7 @@ export default function BlogPage() {
                 Start Planning Now
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

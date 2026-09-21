@@ -48,7 +48,7 @@ export function TrustBadges() {
             Why Choose Sea Horizon Holidays?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Experience the difference of working with Lakshadweep's trusted local experts
+            Experience the difference of working with Lakshadweep&apos;s trusted local experts
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export function TrustBadges() {
           {badges.map((badge, index) => {
             const Icon = badge.icon;
             return (
-              <div 
+              <div
                 key={index}
                 className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in border-l-4 border-primary-500"
                 style={{ animationDelay: `${index * 100}ms` }}

@@ -16,7 +16,7 @@ export function WhatsAppFloat() {
     return () => clearTimeout(timer);
   }, []);
 
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip.${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace('+', '')}?text=Hi Sea Horizon! I'd like to know more about your Lakshadweep packages.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Hi Sea Horizon! I'd like to know more about your Lakshadweep packages.`)}`;
 
   if (!isVisible) return null;
 
@@ -42,11 +42,11 @@ export function WhatsAppFloat() {
               <X className="h-4 w-4" />
             </button>
           </div>
-          
+
           <p className="text-sm text-gray-700 mb-4">
             Hi! 👋 Need help planning your Lakshadweep trip? Chat with our local experts now!
           </p>
-          
+
           <Button
             asChild
             className="w-full bg-[#25d366] hover:bg-[#128c7e] text-white"

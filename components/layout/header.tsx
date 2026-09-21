@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,22 +23,24 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const solidHeader = isScrolled || pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to know more about your Lakshadweep packages.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to know more about your Lakshadweep packages.`)}`;
 
   return (
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled
+        solidHeader
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20"
           : "bg-transparent"
       )}
@@ -48,14 +52,14 @@ export function Header() {
             href="/"
             className="flex items-center space-x-2 font-bold text-xl focus-ring"
           >
-            <img
+            <Image width={64} height={64} sizes="32px"
               src="/logo.png.jpg"
               alt="Sea Horizon Holidays Logo"
               className="w-8 h-8 rounded-full object-cover"
             />
             <span className={cn(
               "transition-colors duration-300",
-              isScrolled ? "text-primary-700" : "text-white text-shadow-md"
+              solidHeader ? "text-primary-700" : "text-white drop-shadow-sm"
             )}>
               Sea Horizon
             </span>
@@ -70,12 +74,12 @@ export function Header() {
                 className={cn(
                   "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus-ring",
                   pathname === item.href
-                    ? isScrolled
+                    ? solidHeader
                       ? "bg-primary-100 text-primary-800"
                       : "bg-white/20 text-white"
-                    : isScrolled
+                    : solidHeader
                       ? "text-gray-600 hover:text-primary-700 hover:bg-primary-50"
-                      : "text-white/90 hover:text-white hover:bg-white/10 text-shadow-md"
+                      : "text-white/90 hover:text-white hover:bg-white/10 drop-shadow-sm"
                 )}
               >
                 {item.name}
@@ -94,7 +98,7 @@ export function Header() {
               <Phone className="h-4 w-4" />
               <span className={cn(
                 "transition-colors duration-300",
-                isScrolled ? "text-gray-600" : "text-white/90 text-shadow-md"
+                solidHeader ? "text-gray-600" : "text-white/90 drop-shadow-sm"
               )}>
                 +91 8075301729
               </span>
@@ -115,10 +119,13 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
+            aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
               "lg:hidden p-2 rounded-md transition-colors duration-200 focus-ring",
-              isScrolled ? "text-gray-600 hover:text-primary-700" : "text-white text-shadow-md hover:text-white/80"
+              solidHeader ? "text-gray-600 hover:text-primary-700" : "text-white drop-shadow-sm hover:text-white/80"
             )}
           >
             {isMobileMenuOpen ? (
@@ -131,7 +138,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
+          <div id="mobile-navigation" className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Link

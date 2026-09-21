@@ -1,10 +1,14 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Award, Clock, Users, MapPin, Phone, Star, CheckCircle, Heart, Anchor } from 'lucide-react';
 
 export const metadata = {
-  title: 'Why Book with Sea Horizon Holidays — Local Experts, Permits, 24×7 Support',
+  alternates: { canonical: 'https://seahorizonholidays.com/why-us' },
+  openGraph: { url: 'https://seahorizonholidays.com/why-us' },
+  title: { absolute: 'Why Book with Sea Horizon Holidays — Local Experts, Permits, 24×7 Support' },
   description: 'Discover why Sea Horizon Holidays is Lakshadweep\'s trusted DMC. Local expertise, government permits handled, 24×7 WhatsApp support, and 500+ happy travelers.',
   keywords: 'Lakshadweep DMC, local tour operator, permits handled, WhatsApp support, trusted travel company',
 };
@@ -134,7 +138,7 @@ const certifications = [
 ];
 
 export default function WhyUsPage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to know more about why I should choose you for my Lakshadweep trip.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to know more about why I should choose you for my Lakshadweep trip.`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -149,11 +153,11 @@ export default function WhyUsPage() {
               Why Choose Sea Horizon Holidays?
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8">
-              As Lakshadweep's trusted local DMC, we bring unmatched expertise, 
+              As Lakshadweep&apos;s trusted local DMC, we bring unmatched expertise,
               seamless permit handling, and 24×7 support to make your island dreams come true.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 className="bg-white text-primary-600 hover:bg-gray-100"
@@ -162,15 +166,15 @@ export default function WhyUsPage() {
                   Get Instant Quote
                 </a>
               </Button>
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-primary-600"
               >
-                <a href="/packages">
+                <Link href="/packages">
                   View Our Packages
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
@@ -205,7 +209,7 @@ export default function WhyUsPage() {
               What Makes Us Different
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the Sea Horizon difference with our comprehensive approach 
+              Experience the Sea Horizon difference with our comprehensive approach
               to Lakshadweep travel planning and execution.
             </p>
           </div>
@@ -214,7 +218,7 @@ export default function WhyUsPage() {
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="group bg-white hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -261,7 +265,7 @@ export default function WhyUsPage() {
             {certifications.map((cert, index) => {
               const Icon = cert.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="text-center p-6 rounded-lg bg-gray-50 hover:bg-primary-50 transition-colors animate-fade-in"
                   style={{ animationDelay: `${index * 150}ms` }}
@@ -296,7 +300,7 @@ export default function WhyUsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="bg-white hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg"
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -304,21 +308,21 @@ export default function WhyUsPage() {
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
+                      <Star
+                        key={i}
                         className={`h-4 w-4 ${
-                          i < testimonial.rating 
-                            ? 'fill-yellow-400 text-yellow-400' 
+                          i < testimonial.rating
+                            ? 'fill-yellow-400 text-yellow-400'
                             : 'text-gray-300'
-                        }`} 
+                        }`}
                       />
                     ))}
                   </div>
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </p>
                   <div className="flex items-center space-x-3">
-                    <img
+                    <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
                       src={testimonial.avatar}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover"
@@ -346,11 +350,11 @@ export default function WhyUsPage() {
             Ready to Experience the Sea Horizon Difference?
           </h2>
           <p className="text-xl text-primary-100 mb-8">
-            Join 500+ happy travelers who chose us for their Lakshadweep adventure. 
+            Join 500+ happy travelers who chose us for their Lakshadweep adventure.
             Get your personalized quote in minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -359,15 +363,15 @@ export default function WhyUsPage() {
                 Get WhatsApp Quote Now
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-primary-600"
             >
-              <a href="/#trip-planner">
+              <Link href="/#trip-planner">
                 Plan My Trip
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { MapPin, Clock, Users, Star, ArrowRight } from 'lucide-react';
@@ -31,7 +33,7 @@ export function FeaturedPackages() {
             >
               {/* Package Image */}
               <div className="relative h-64 overflow-hidden">
-                <img
+                <Image width={800} height={500} sizes="(max-width: 768px) 100vw, 33vw"
                   src={pkg.images[0]}
                   alt={pkg.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -96,7 +98,7 @@ export function FeaturedPackages() {
                     className="px-4 border-blue-600 text-blue-600 hover:bg-blue-50"
                   >
                     <a
-                      href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide more details?`}
+                      href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon, I'm interested in the ${pkg.title} package. Can you provide more details?`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
