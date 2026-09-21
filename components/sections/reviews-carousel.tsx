@@ -24,7 +24,7 @@ export function ReviewsCarousel() {
 
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % Math.ceil(reviews.length / 3));
     }, 5000);
@@ -55,10 +55,10 @@ export function ReviewsCarousel() {
             What Our Travelers Say
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Real experiences from real travelers who chose Sea Horizon for their 
+            Real experiences from real travelers who chose Sea Horizon for their
             Lakshadweep adventures
           </p>
-          
+
           {/* Overall Rating */}
           <div className="flex items-center justify-center space-x-2 mt-6">
             <div className="flex items-center">
@@ -85,7 +85,7 @@ export function ReviewsCarousel() {
               />
             ))}
           </div>
-          
+
           <div className="flex space-x-2">
             <Button
               variant="outline"
@@ -113,7 +113,7 @@ export function ReviewsCarousel() {
           {currentReviews.map((review, index) => {
             const tripTypeDisplay = getTripTypeDisplay(review.tripType);
             return (
-              <Card 
+              <Card
                 key={review.id}
                 className="bg-white hover:shadow-xl transition-all duration-500 animate-fade-in border-0 shadow-lg"
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -121,24 +121,24 @@ export function ReviewsCarousel() {
                 <CardContent className="p-6">
                   {/* Quote Icon */}
                   <Quote className="h-8 w-8 text-primary-200 mb-4" />
-                  
+
                   {/* Rating */}
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
+                      <Star
+                        key={i}
                         className={`h-4 w-4 ${
-                          i < review.rating 
-                            ? 'fill-yellow-400 text-yellow-400' 
+                          i < review.rating
+                            ? 'fill-yellow-400 text-yellow-400'
                             : 'text-gray-300'
-                        }`} 
+                        }`}
                       />
                     ))}
                   </div>
 
                   {/* Review Text */}
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    "{review.quote}"
+                    &quot;{review.quote}&quot;
                   </p>
 
                   {/* Reviewer Info */}
@@ -154,13 +154,13 @@ export function ReviewsCarousel() {
                         {review.name}
                       </h4>
                       <p className="text-sm text-gray-600 mb-2">
-                        {review.location} • {new Date(review.date).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          year: 'numeric' 
+                        {review.location} • {new Date(review.date).toLocaleDateString('en-US', {
+                          month: 'short',
+                          year: 'numeric'
                         })}
                       </p>
-                      <Badge 
-                        variant="secondary" 
+                      <Badge
+                        variant="secondary"
                         className={`text-xs ${tripTypeDisplay.color}`}
                       >
                         {tripTypeDisplay.label}
@@ -183,13 +183,13 @@ export function ReviewsCarousel() {
           <p className="text-gray-600 mb-4">
             Join these happy travelers and create your own Lakshadweep memories
           </p>
-          <Button 
-            asChild 
+          <Button
+            asChild
             size="lg"
             className="bg-[#25d366] hover:bg-[#128c7e] text-white"
           >
             <a
-              href={`https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I've read the amazing reviews and would like to plan my Lakshadweep trip too. Can you help me?`}
+              href={`https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I've read the amazing reviews and would like to plan my Lakshadweep trip too. Can you help me?`)}`}
               target="_blank"
               rel="noopener noreferrer"
             >

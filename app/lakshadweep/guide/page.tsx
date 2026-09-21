@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Clock, MapPin, Users, FileText, Plane, Calendar } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide' },
+  openGraph: { url: 'https://seahorizonholidays.com/lakshadweep/guide' },
   title: 'Lakshadweep Travel Guide — Complete Planning Information | Sea Horizon Holidays',
   description: 'Complete Lakshadweep travel guide with best time to visit, how to reach, permits, rules, and essential travel information.',
   keywords: 'Lakshadweep travel guide, permits, best time to visit, how to reach, travel tips',
@@ -38,7 +40,7 @@ const guides = [
 ];
 
 export default function LakshadweepGuidePage() {
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I need help with Lakshadweep travel planning and permits.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I need help with Lakshadweep travel planning and permits.`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -66,8 +68,8 @@ export default function LakshadweepGuidePage() {
               Lakshadweep Travel Guide
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Everything you need to know for planning your perfect Lakshadweep vacation. 
-              From permits to weather, we've got you covered.
+              Everything you need to know for planning your perfect Lakshadweep vacation.
+              From permits to weather, we&apos;ve got you covered.
             </p>
           </div>
         </div>
@@ -79,7 +81,7 @@ export default function LakshadweepGuidePage() {
           {guides.map((guide, index) => {
             const Icon = guide.icon;
             return (
-              <Card 
+              <Card
                 key={index}
                 className="group hover:shadow-xl transition-all duration-500 animate-fade-in"
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -159,7 +161,7 @@ export default function LakshadweepGuidePage() {
             ].map((tip, index) => {
               const Icon = tip.icon;
               return (
-                <Card 
+                <Card
                   key={index}
                   className="p-6 hover:shadow-lg transition-shadow animate-fade-in"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -187,11 +189,11 @@ export default function LakshadweepGuidePage() {
             Need Help Planning Your Trip?
           </h2>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Our local experts handle all the complexities - from permits to itineraries. 
+            Our local experts handle all the complexities - from permits to itineraries.
             Focus on enjoying your vacation while we take care of everything else.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-white text-primary-600 hover:bg-gray-100"
@@ -200,7 +202,7 @@ export default function LakshadweepGuidePage() {
                 Get Expert Help
               </a>
             </Button>
-            <Button 
+            <Button
               asChild
               size="lg"
               variant="outline"

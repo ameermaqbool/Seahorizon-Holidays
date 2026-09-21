@@ -1,46 +1,10 @@
-// Service Worker for caching and offline functionality
-
-const CACHE_NAME = 'sea-horizon-v1';
-const urlsToCache = [
-  '/',
-  '/packages',
-  '/lakshadweep',
-  '/blog',
-  '/contact',
-  '/offline.html',
-  // Add critical CSS and JS files
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
-      }
-    )
-  );
-});
-
+// Retire the old cache-first worker so repeat visitors receive current pages.
+self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('sea-horizon-')).map(key => caches.delete(key)));
+    await self.registration.unregister();
+    await self.clients.claim();
+  })());
 });

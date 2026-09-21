@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/lib/data/blog';
@@ -8,9 +9,7 @@ import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
 import Link from 'next/link';
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -20,8 +19,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = blogPosts.find(p => p.slug === params.slug);
-  
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.slug === slug);
+
   if (!post) {
     return {
       title: 'Blog Post Not Found',
@@ -29,26 +29,29 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
+    alternates: { canonical: `https://seahorizonholidays.com/blog/${slug}` },
+    openGraph: { url: `https://seahorizonholidays.com/blog/${slug}`, title: post.title },
     title: `${post.title} | Sea Horizon Holidays Blog`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find(p => p.slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.slug === slug);
 
   if (!post) {
     notFound();
   }
 
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I read your blog post "${post.title}" and would like to plan my Lakshadweep trip. Can you help me?`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I read your blog post "${post.title}" and would like to plan my Lakshadweep trip. Can you help me?`)}`;
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
-        <img
+        <Image priority width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
           src={post.cover}
           alt={post.title}
           className="w-full h-full object-cover"
@@ -71,10 +74,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-2" />
-                {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                {new Date(post.publishedAt).toLocaleDateString('en-US', {
                   year: 'numeric',
-                  month: 'long', 
-                  day: 'numeric' 
+                  month: 'long',
+                  day: 'numeric'
                 })}
               </div>
               <div className="flex items-center">
@@ -104,15 +107,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {post.excerpt}
               </p>
-              
+
               <div className="space-y-6 text-gray-700 leading-relaxed">
                 <p>
-                  This comprehensive guide will help you understand everything you need to know about this topic. 
+                  This comprehensive guide will help you understand everything you need to know about this topic.
                   Our local experts have compiled years of experience to bring you the most accurate and up-to-date information.
                 </p>
-                
+
                 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Points to Remember</h2>
-                
+
                 <ul className="space-y-2">
                   <li>• Plan your trip during the optimal season for the best experience</li>
                   <li>• Book accommodations and permits well in advance</li>
@@ -120,26 +123,26 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <li>• Respect local customs and environmental guidelines</li>
                   <li>• Consider working with local experts for seamless planning</li>
                 </ul>
-                
+
                 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Expert Recommendations</h2>
-                
+
                 <p>
-                  Based on our extensive experience in Lakshadweep tourism, we recommend taking a comprehensive approach 
-                  to your travel planning. The islands offer unique experiences that require careful consideration of 
+                  Based on our extensive experience in Lakshadweep tourism, we recommend taking a comprehensive approach
+                  to your travel planning. The islands offer unique experiences that require careful consideration of
                   timing, logistics, and local conditions.
                 </p>
-                
+
                 <p>
-                  Our team of local experts can help you navigate all aspects of your Lakshadweep journey, from permits 
-                  and transportation to activities and accommodations. We ensure that every detail is taken care of so 
+                  Our team of local experts can help you navigate all aspects of your Lakshadweep journey, from permits
+                  and transportation to activities and accommodations. We ensure that every detail is taken care of so
                   you can focus on enjoying your tropical paradise experience.
                 </p>
-                
+
                 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Ready to Plan Your Trip?</h2>
-                
+
                 <p>
-                  Don&apos;t let the complexities of island travel planning overwhelm you. Our experienced team handles 
-                  everything from permits to itineraries, ensuring your Lakshadweep adventure is everything you&apos;ve 
+                  Don&apos;t let the complexities of island travel planning overwhelm you. Our experienced team handles
+                  everything from permits to itineraries, ensuring your Lakshadweep adventure is everything you&apos;ve
                   dreamed of and more.
                 </p>
               </div>
@@ -154,11 +157,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               Ready to Turn This Knowledge Into Your Adventure?
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Let our local experts help you plan the perfect Lakshadweep experience based on the insights 
+              Let our local experts help you plan the perfect Lakshadweep experience based on the insights
               from this guide. Get personalized recommendations and hassle-free booking.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 className="bg-[#25d366] hover:bg-[#128c7e] text-white"
@@ -167,7 +170,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   Plan My Trip on WhatsApp
                 </a>
               </Button>
-              <Button 
+              <Button
                 asChild
                 size="lg"
                 variant="outline"
@@ -191,7 +194,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               .map((relatedPost) => (
                 <Card key={relatedPost.slug} className="hover:shadow-lg transition-shadow">
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw"
                       src={relatedPost.cover}
                       alt={relatedPost.title}
                       className="w-full h-full object-cover"

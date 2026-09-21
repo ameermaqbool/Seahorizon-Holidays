@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Star, Calendar, Users, Phone, Instagram } from 'lucide-react';
@@ -9,7 +11,7 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image fill priority sizes="100vw"
           src="https://images.pexels.com/photos/33485180/pexels-photo-33485180.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Lakshadweep Islands Paradise"
           className="w-full h-full object-cover"

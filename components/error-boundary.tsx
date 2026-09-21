@@ -28,7 +28,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ errorInfo });
-    
+
     // Log error to tracking service
     if (typeof window !== 'undefined' && (window as any).__errorTracker) {
       (window as any).__errorTracker.logError({
@@ -60,13 +60,13 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="inline-flex p-3 rounded-full bg-red-100 text-red-600 mb-4">
                 <AlertTriangle className="h-8 w-8" />
               </div>
-              
+
               <h1 className="text-2xl font-bold text-gray-900 mb-4">
                 Oops! Something went wrong
               </h1>
-              
+
               <p className="text-gray-600 mb-6">
-                We're sorry for the inconvenience. Our team has been notified and is working to fix this issue.
+                We&apos;re sorry for the inconvenience. Our team has been notified and is working to fix this issue.
               </p>
 
               {process.env.NODE_ENV === 'development' && this.state.error && (
@@ -86,13 +86,13 @@ export class ErrorBoundary extends Component<Props, State> {
                   <RefreshCw className="h-4 w-4 mr-2" />
                   Try Again
                 </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => window.location.href = '/'}
+                <Button
+                  variant="outline"
+                  onClick={() => window.location.reload()}
                   className="flex-1"
                 >
                   <Home className="h-4 w-4 mr-2" />
-                  Go Home
+                  Reload Page
                 </Button>
               </div>
 

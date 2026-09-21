@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -30,7 +32,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappUrl = `https://wa.me/918075301729?text=Hi%20Sea%20Horizon!%20I%20want%20to%20plan%20a%20Lakshadweep%20trip. Sea Horizon! I'd like to know more about your Lakshadweep packages.`;
+  const whatsappUrl = `https://wa.me/918075301729?text=${encodeURIComponent(`Sea Horizon! I'd like to know more about your Lakshadweep packages.`)}`;
 
   return (
     <header
@@ -48,7 +50,7 @@ export function Header() {
             href="/"
             className="flex items-center space-x-2 font-bold text-xl focus-ring"
           >
-            <img
+            <Image width={64} height={64} sizes="32px"
               src="/logo.png.jpg"
               alt="Sea Horizon Holidays Logo"
               className="w-8 h-8 rounded-full object-cover"
