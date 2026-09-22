@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
+    alternates: { canonical: `https://seahorizonholidays.com/blog/${params.slug}` },
     title: `${post.title} | Sea Horizon Holidays Blog`,
     description: post.excerpt,
     keywords: post.tags.join(', '),

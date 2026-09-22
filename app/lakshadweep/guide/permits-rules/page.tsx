@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FileText, Shield, AlertCircle, CheckCircle, Users, Clock } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/permits-rules' },
   title: 'Lakshadweep Permits & Rules — Entry Requirements Guide | Sea Horizon Holidays',
   description: 'Complete guide to Lakshadweep entry permits, documentation requirements, and local rules. We handle all permit formalities for hassle-free travel.',
   keywords: 'Lakshadweep permits, entry permit, documentation, travel rules, restricted areas, permit requirements',

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { MapPin, Clock, Users, Star, Waves, Camera, Heart, Anchor } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep' },
   title: 'Lakshadweep Travel Guide — Islands, Culture, Activities | Sea Horizon Holidays',
   description: 'Complete Lakshadweep travel guide covering all islands, best time to visit, permits, culture, activities, and local insights from Sea Horizon Holidays.',
   keywords: 'Lakshadweep guide, coral islands, Agatti, Bangaram, travel tips, permits, best time to visit',

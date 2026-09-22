@@ -14,6 +14,12 @@ export function generateStaticParams() {
   }));
 }
 
+export function generateMetadata({ params }: IslandPageProps) {
+  return {
+    alternates: { canonical: `https://seahorizonholidays.com/lakshadweep/islands/${params.slug}` },
+  };
+}
+
 export default function IslandPage({ params }: IslandPageProps) {
   const island = islands.find((i) => i.slug === params.slug);
 

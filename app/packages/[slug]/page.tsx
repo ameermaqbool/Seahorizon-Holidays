@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: PackageDetailsPageProps): Pro
   }
 
   return {
+    alternates: { canonical: `https://seahorizonholidays.com/packages/${params.slug}` },
     title: `${pkg.title} | Sea Horizon Holidays`,
     description: pkg.description,
     keywords: `${pkg.title}, Lakshadweep, ${pkg.islands.join(', ')}, ${pkg.category}`,

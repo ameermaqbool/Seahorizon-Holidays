@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { MessageCircle, Phone, Mail, HelpCircle } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/faq' },
   title: 'Lakshadweep Travel FAQ — Common Questions Answered | Sea Horizon Holidays',
   description: 'Get answers to frequently asked questions about Lakshadweep travel, permits, packages, weather, activities, and booking with Sea Horizon Holidays.',
   keywords: 'Lakshadweep FAQ, travel questions, permits, booking, weather, activities, Sea Horizon Holidays',

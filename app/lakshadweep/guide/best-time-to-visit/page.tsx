@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Sun, Cloud, Waves, Thermometer, Wind, Calendar } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/lakshadweep/guide/best-time-to-visit' },
   title: 'Best Time to Visit Lakshadweep — Weather Guide 2025 | Sea Horizon Holidays',
   description: 'Complete weather guide for Lakshadweep. October to March is ideal with calm seas, clear skies, and perfect conditions for water sports and island hopping.',
   keywords: 'Lakshadweep weather, best time to visit, October to March, monsoon season, water sports weather',

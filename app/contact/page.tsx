@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { MessageCircle, Phone, Mail, MapPin, Clock, Users } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: 'https://seahorizonholidays.com/contact' },
   title: 'Contact Sea Horizon Holidays — 24×7 WhatsApp Support | Lakshadweep Experts',
   description: 'Contact Sea Horizon Holidays for Lakshadweep travel planning. 24×7 WhatsApp support, phone, email. Local experts ready to help plan your perfect coral island vacation.',
   keywords: 'contact Sea Horizon Holidays, Lakshadweep travel support, WhatsApp booking, travel experts, customer service',
