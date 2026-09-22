@@ -45,7 +45,7 @@
     "web-vitals": "^5.1.0"
   },
   "engines": {
-    "node": "20"
+    "node": "22.x"
   },
   "devDependencies": {
     "next-sitemap": "^4.2.3"

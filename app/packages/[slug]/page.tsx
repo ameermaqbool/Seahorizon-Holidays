@@ -435,7 +435,7 @@ export default function PackageDetailsPage({ params }: PackageDetailsPageProps) 
                   variant="outline" 
                   className="w-full"
                 >
-                  <a href="tel:8075301729">
+                  <a href="tel:+918075301729">
                     <Phone className="h-4 w-4 mr-2" />
                     Call Now
                   </a>

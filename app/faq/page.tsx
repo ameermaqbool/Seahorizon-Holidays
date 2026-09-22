@@ -200,7 +200,7 @@ export default function FAQPage() {
                   <h3 className="font-semibold text-gray-900 mb-2">Phone Call</h3>
                   <p className="text-sm text-gray-600 mb-3">Direct conversation</p>
                   <Button asChild size="sm" variant="outline">
-                    <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}>
+                    <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+918075301729'}`}>
                       Call Now
                     </a>
                   </Button>

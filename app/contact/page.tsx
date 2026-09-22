@@ -1,3 +1,4 @@
+import { WhatsAppContactForm } from '@/components/forms/whatsapp-contact-form';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -178,43 +179,43 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Send Us a Message
                 </h3>
-                <form className="space-y-6">
+                <WhatsAppContactForm className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="Your first name" required />
+                      <Input id="firstName" name="firstName" placeholder="Your first name" required />
                     </div>
                     <div>
                       <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Your last name" required />
+                      <Input id="lastName" name="lastName" placeholder="Your last name" required />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" required />
+                      <Input id="email" name="email" type="email" placeholder="your@email.com" required />
                     </div>
                     <div>
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" type="tel" placeholder="+91 9876543210" required />
+                      <Input id="phone" name="phone" type="tel" placeholder="+91 9876543210" required />
                     </div>
                   </div>
                   
                   <div>
                     <Label htmlFor="travelDates">Preferred Travel Dates</Label>
-                    <Input id="travelDates" placeholder="e.g., 15-20 March 2025" />
+                    <Input id="travelDates" name="travelDates" placeholder="e.g., 15-20 March 2025" />
                   </div>
                   
                   <div>
                     <Label htmlFor="travelers">Number of Travelers</Label>
-                    <Input id="travelers" placeholder="e.g., 2 adults, 1 child" />
+                    <Input id="travelers" name="travelers" placeholder="e.g., 2 adults, 1 child" />
                   </div>
                   
                   <div>
                     <Label htmlFor="message">Your Message *</Label>
                     <Textarea 
-                      id="message" 
+                      id="message" name="message"
                       placeholder="Tell us about your travel preferences, interests, budget, or any specific questions..."
                       rows={5}
                       required
@@ -226,9 +227,9 @@ export default function ContactPage() {
                   </Button>
                   
                   <p className="text-sm text-gray-500 text-center">
-                    We'll respond within 2-4 hours during business hours
+                    Continue in WhatsApp to review and send your message.
                   </p>
-                </form>
+                </WhatsAppContactForm>
               </CardContent>
             </Card>
 
@@ -329,7 +330,7 @@ export default function ContactPage() {
                       variant="outline"
                       className="border-red-300 text-red-700 hover:bg-red-100"
                     >
-                      <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}>
+                      <a href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+918075301729'}`}>
                         <Phone className="h-4 w-4 mr-2" />
                         Emergency Call
                       </a>
