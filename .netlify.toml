@@ -1,10 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# netlify.toml is the canonical configuration used by Netlify.
