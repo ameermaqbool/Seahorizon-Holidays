@@ -3,5 +3,13 @@
   publish = "out"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
+
+# Keep the apex domain canonical. The www hostname must also be configured as
+# a domain alias in Netlify so its TLS certificate is valid before redirecting.
+[[redirects]]
+  from = "https://www.seahorizonholidays.com/*"
+  to = "https://seahorizonholidays.com/:splat"
+  status = 301
+  force = true
